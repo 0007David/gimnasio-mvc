@@ -114,13 +114,12 @@ public class Cinscripcion implements MouseListener, ActionListener {
                         nInscripcion.setId(nInscripcion.getMaxId());
 
                         nInscripcion.setDetalleInscripcionR(); //inserta el detalle
-                        System.out.println("Exito Registrado");
-                        this.vInscripcion.getInscripciones();
+                        System.out.println("Registrado");
                     } else {
-
                         JOptionPane.showMessageDialog(null, "El registro ya existe solo puede Modificar");
-                        this.vInscripcion.getInscripciones();
+                        this.nInscripcion.vaciarDetalleInscripcion();
                     }
+                    this.vInscripcion.getInscripciones();
                 } catch (Exception ex) {
                     Logger.getLogger(Cinscripcion.class.getName()).log(Level.SEVERE, null, ex);
                     System.out.println("Error Al darle click Registrar");
@@ -158,10 +157,9 @@ public class Cinscripcion implements MouseListener, ActionListener {
                             nInscripcion.addDetalleInscripcion(disciplina.getId(), fechaInicio, fechaFin, subMonto);
                         }
                         nInscripcion.setDetalleInscripcionR(); //inserta el detalle
-                        System.out.println("Exito Modificar");
-                        this.vInscripcion.getInscripciones();
-
+                        System.out.println("Modificado");
                     }
+                    this.vInscripcion.getInscripciones();
                 } catch (Exception ex) {
                     Logger.getLogger(Cinscripcion.class.getName()).log(Level.SEVERE, null, ex);
                     System.out.println("Error Al darle click Registrar");
@@ -193,7 +191,7 @@ public class Cinscripcion implements MouseListener, ActionListener {
                     }
                     this.vInscripcion.getInscripciones();
                 } else {
-                    System.out.println("No se puede eliminar");
+                    this.nInscripcion.vaciarDetalleInscripcion();
                 }
 
                 break;
